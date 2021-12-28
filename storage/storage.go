@@ -4,6 +4,7 @@ import (
 	"generics/model"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"os"
 )
 
 type Storage struct {
@@ -12,7 +13,7 @@ type Storage struct {
 
 func New() *Storage {
 	db, err := gorm.
-		Open("postgres", "postgres://ajotxkyerxugmt:002367e4269f2862de7553ce0e1161e68250678d04172935cee2d04fc2f9e34e@ec2-52-213-119-221.eu-west-1.compute.amazonaws.com:5432/d9i56c8ddu2l4n")
+		Open("postgres", os.Getenv("DB_DSN"))
 	if err != nil {
 		panic(err.Error())
 	}

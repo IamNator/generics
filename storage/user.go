@@ -23,8 +23,7 @@ func (u *User) CreateUser(user model.User) (*model.User, error) {
 	if er != nil {
 		return nil, er
 	}
-	//
-	//return user_, nil
+
 	return useR, nil
 }
 

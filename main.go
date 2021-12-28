@@ -5,12 +5,18 @@ import (
 	"generics/model"
 	"generics/storage"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"log"
 	"net/http"
 	"sync"
 )
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	str := storage.New()
 	str.InitModels()
 	cntrl := controller.New(str)
